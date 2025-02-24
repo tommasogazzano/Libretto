@@ -57,7 +57,7 @@ class Casa:
 
     def addStudente(self, studente):
         self.studenti.append(studente) # --> [ x,x,x [s1, s2]]
-        pass
+
         # self.studenti.extend(studente) # --> [ x,x,x, s1, s2 ]
 
     def __str__(self):
