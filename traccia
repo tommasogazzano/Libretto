@@ -1,0 +1,27 @@
+Traccia
+
+Il Professor Albus Silente inizia ad accusare gli acciacchi dell'età, e non ricorda più chi sono i suoi studenti e docenti nel suo mestiere di preside della scuola di magia e stregoneria di Hogwarts.
+Per questo, la prof McGonagal ha richiesto alla TdP consulting lo sviluppo di un algoritmo che tenga traccia delle iscrizioni di tutti i singoli studenti, assieme a varie informazioni rilevanti quali gli esami svolti ed i voti registrati, e del corpo docente.
+
+La Prof. McGonagal richiede la possibilità di poter avere informazioni riguardanti le seguenti caratteristiche:
+- appartenenza ad una casa
+- iscrizione ad un certo corso
+- appartenenza al corpo studente o docente
+
+Per ogni persona, vogliamo registrare:
+- nome
+- cognome
+- età
+- colore dei capelli
+- colore degli occhi
+- casa di appartenenza
+- incantesimo preferito (solo quando imparerà a padroneggiarne qualcuno senza dare fuoco alla stanza)
+
+Il libretto conterrà le seguenti informazioni:
+- studente
+- per ogni esame svolto
+	- nome esame
+	- cfu
+	- voto
+	- data
+- il libretto dovrà anche restituire informazioni aggregate sugli esami svolti, come la media
