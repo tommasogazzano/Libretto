@@ -56,9 +56,8 @@ class Casa:
         self.studenti = studenti
 
     def addStudente(self, studente):
-        self.studenti.append(studente) # --> [ x,x,x [s1, s2]]
-
-        # self.studenti.extend(studente) # --> [ x,x,x, s1, s2 ]
+        # self.studenti.append(studente) # --> [ x,x,x [s1, s2]]
+        self.studenti.extend(studente) # --> [ x,x,x, s1, s2 ]
 
     def __str__(self):
         if len(self.studenti) == 0:
@@ -82,5 +81,5 @@ print(Severus)
 
 grifondoro = Casa("Grifodnoro", [Harry])
 print(grifondoro)
-grifondoro.addStudente(Ron)
+grifondoro.addStudente([Ron])
 print(grifondoro)
