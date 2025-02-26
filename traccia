@@ -30,5 +30,6 @@ Il libretto conterrà le seguenti informazioni:
 --------------------------------------------------
 # TODO
 - arbitrary arguments, difference between * and **
+- split people in houses, and build the class School
 - class voto and libretto
 - method to compute media

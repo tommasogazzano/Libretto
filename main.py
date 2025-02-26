@@ -81,8 +81,8 @@ Remus = Teacher(nome="Remus", cognome="Lupin", eta=36, capelli="castani", occhi=
 Minerva = Teacher(nome="Minerva", cognome="McGranitt", eta=70, capelli="neri", occhi="verdi", casa="Grifondoro", materia="Trasfigurazione", incantesimo="Trasfigurazione Animale")
 Albus = Teacher(nome="Albus", cognome="Silente", eta=115, capelli="argento", occhi="azzurri", casa="Grifondoro", materia="Preside")
 Rubeus = Person(nome="Rubeus", cognome="Hagrid", eta=60, capelli="neri", occhi="neri", casa="Grifondoro") #Rubeus non è ne studente ne professore ad Hogwarts
-James = Person(nome="James", cognome="Potter", eta=17, capelli="neri", occhi="castani", casa="Grifondoro", animale="cervo")
-Lily = Person(nome="Lily", cognome="Evans", eta=17, capelli="rosso", occhi="verdi", casa="Grifondoro", animale="nessuno")
+James = Person(nome="James", cognome="Potter", eta=17, capelli="neri", occhi="castani", casa="Grifondoro")
+Lily = Person(nome="Lily", cognome="Evans", eta=17, capelli="rosso", occhi="verdi", casa="Grifondoro")
 Fred = Student(nome = "Fred", cognome = "Weasley", eta = 16, capelli = "rossi", occhi = "castani", casa = "Grifondoro", animale="nessuno")
 George = Student(nome = "George", cognome = "Weasley", eta = 16, capelli = "rossi", occhi = "castani", casa = "Grifondoro", animale="nessuno")
 
