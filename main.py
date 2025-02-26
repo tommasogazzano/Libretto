@@ -21,15 +21,24 @@ class Person:
     def __init__(self, nome, cognome, eta,
                  capelli, occhi, casa, incantesimo="Non ancora definito"):
         self.nome = nome
-        self.cognome = cognome
+        self._cognome = cognome
         self.eta = eta
         self.capelli = capelli
         self.occhi = occhi
         self.casa = casa
+        self.__prova = None
         self.incantesimo = incantesimo
 
     def __str__(self):
-        return f"Person: {self.nome} {self.cognome} \n"
+        return f"Person: {self.nome} {self._cognome} \n"
+
+    @property
+    def cognome(self): # eq. GETTER
+        return self._cognome
+    @cognome.setter
+    def cognome(self, value): # eq. SETTER
+        #CONTROLLI per verificare che value sia compativile con _cognome
+        self._cognome = value
 
 class Student(Person):
     def __init__(self, nome, cognome, eta,
@@ -38,7 +47,7 @@ class Student(Person):
         self.animale = animale
 
     def __str__(self):
-        return f"Student: {self.nome} - {self.cognome} - {self.casa} \n "
+        return f"Student: {self.nome} - {self._cognome} - {self.casa} \n "
 
     def __repr__(self):
         return f"Student(nome, cognome, eta, capelli, occhi, casa, animale)"
@@ -52,7 +61,7 @@ class Teacher(Person):
         super().__init__(nome, cognome, eta, capelli, occhi, casa, incantesimo)
         self.materia = materia
     def __str__(self):
-        return f"Teacher: {self.nome} - {self.cognome} - {self.materia} \n "
+        return f"Teacher: {self.nome} - {self._cognome} - {self.materia} \n "
 class Casa:
     def __init__(self, nome, studenti = [] ):
         self.nome = nome
@@ -121,3 +130,7 @@ print(Harry, Ron, Susan, Xenophilius, Remus)
 personaggi = [Harry, Hermione, Ron, Neville, Ginny, Sirius, Remus, Minerva, Albus, Rubeus, James, Lily, Fred, George,
               Draco, Severus, Horace, Bellatrix, Lucius, Narcissa, Pansy, Blaise, Luna, Cho, Gilderoy, Filius, Xenophilius,
               Padma, Michael, Cedric, Pomona, Hannah, Ernest, Susan, Ted]
+
+# print(Lily._cognome) # NOOOO!
+
+# print(Lily._Person__prova) NOOOOOOO!
