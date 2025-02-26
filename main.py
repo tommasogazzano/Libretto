@@ -14,6 +14,8 @@
 #          "Grifondoro", ""]
 #
 # Grifondoro = [Harry, Ron]
+from dataclasses import dataclass
+
 
 class Person:
     def __init__(self, nome, cognome, eta,
@@ -95,7 +97,7 @@ Lucius = Person(nome="Lucius", cognome="Malfoy", eta=42, capelli="biondi", occhi
 Narcissa = Person(nome="Narcissa", cognome="Malfoy", eta=41, capelli="biondi", occhi="azzurri", casa="Serpeverde") #Narcissa non è ne studente ne professore ad Hogwarts
 Pansy = Student(nome="Pansy", cognome="Parkinson", eta=12, capelli="neri", occhi="castani", casa="Serpeverde", animale="nessuno")
 Blaise = Student(nome = "Blaise", cognome = "Zabini", eta = 12, capelli = "neri", occhi = "castani", casa = "Serpeverde", animale="nessuno")
-Tom_Riddle = Student(nome="Tom", cognome="Riddle", eta=16, capelli="neri", occhi="neri", casa="Serpeverde", animale_preferito="serpente", incantesimo="Avada Kedavra")
+Tom_Riddle = Student(nome="Tom", cognome="Riddle", eta=16, capelli="neri", occhi="neri", casa="Serpeverde", animale="serpente", incantesimo="Avada Kedavra")
 
 # Corvonero
 Luna = Student(nome="Luna", cognome="Lovegood", eta=11, capelli="biondi", occhi="azzurri", casa="Corvonero", animale="nessuno")
