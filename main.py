@@ -30,7 +30,7 @@ class Person:
         return f"{self.nome} {self.cognome}"
 
 class Student(Person):
-    def __init__(self,nome, cognome, eta,
+    def __init__(self, nome, cognome, eta,
                  capelli, occhi, casa, animale, incantesimo="Non ancora definito"):
         super().__init__(nome, cognome, eta, capelli, occhi, casa, incantesimo)
         self.animale = animale
@@ -71,7 +71,7 @@ class Casa:
 
 Harry = Person("Harry", "Potter", 11,
                "castani", "azzurri", "Grifondoro")
-Ron = Student("Ron", "Weasley", 11, "rossi", "castani",
+Ron = Student( "Ron", "Weasley", 11, "rossi", "castani",
               "Grifondoro", "topo")
 Severus = Teacher("Severus", "Snape", 45, "neri", "neri",
                   "Serpeverde", "Pozioni", "Sectumsempra")
