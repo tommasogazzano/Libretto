@@ -64,9 +64,9 @@ class Casa:
         if len(self.studenti) == 0:
             return "La casa {self.nome} + è vuota."
 
-        mystr = f"Lista degli studenti iscritti alla casa {self.nome} \n"
+        mystr = f"\n Lista degli studenti iscritti alla casa {self.nome} \n"
         for s in self.studenti:
-            mystr += str(s) + "\n"
+            mystr += str(s)
 
         return mystr
 
@@ -81,8 +81,8 @@ Remus = Teacher(nome="Remus", cognome="Lupin", eta=36, capelli="castani", occhi=
 Minerva = Teacher(nome="Minerva", cognome="McGranitt", eta=70, capelli="neri", occhi="verdi", casa="Grifondoro", materia="Trasfigurazione", incantesimo="Trasfigurazione Animale")
 Albus = Teacher(nome="Albus", cognome="Silente", eta=115, capelli="argento", occhi="azzurri", casa="Grifondoro", materia="Preside")
 Rubeus = Person(nome="Rubeus", cognome="Hagrid", eta=60, capelli="neri", occhi="neri", casa="Grifondoro") #Rubeus non è ne studente ne professore ad Hogwarts
-James = Student(nome="James", cognome="Potter", eta=17, capelli="neri", occhi="castani", casa="Grifondoro", animale="cervo")
-Lily = Student(nome="Lily", cognome="Evans", eta=17, capelli="rosso", occhi="verdi", casa="Grifondoro", animale="nessuno")
+James = Person(nome="James", cognome="Potter", eta=17, capelli="neri", occhi="castani", casa="Grifondoro", animale="cervo")
+Lily = Person(nome="Lily", cognome="Evans", eta=17, capelli="rosso", occhi="verdi", casa="Grifondoro", animale="nessuno")
 Fred = Student(nome = "Fred", cognome = "Weasley", eta = 16, capelli = "rossi", occhi = "castani", casa = "Grifondoro", animale="nessuno")
 George = Student(nome = "George", cognome = "Weasley", eta = 16, capelli = "rossi", occhi = "castani", casa = "Grifondoro", animale="nessuno")
 
@@ -115,7 +115,7 @@ Ted = Person(nome="Ted", cognome="Tonks", eta=24, capelli="castano", occhi="neri
 
 print(Harry, Ron, Susan, Xenophilius, Remus)
 
-grifondoro = Casa("Grifodnoro", [Harry])
-print(grifondoro)
-grifondoro.addStudente([Ron])
-print(grifondoro)
+personaggi = [Harry, Hermione, Ron, Neville, Ginny, Sirius, Remus, Minerva, Albus, Rubeus, James, Lily, Fred, George,
+              Draco, Severus, Horace, Bellatrix, Lucius, Narcissa, Pansy, Blaise, Luna, Cho, Gilderoy, Filius, Xenophilius,
+              Padma, Michael, Cedric, Pomona, Hannah, Ernest, Susan, Ted]
+
