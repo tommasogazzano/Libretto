@@ -15,8 +15,6 @@
 #
 # Grifondoro = [Harry, Ron]
 from dataclasses import dataclass
-
-
 class Person:
     def __init__(self, nome, cognome, eta,
                  capelli, occhi, casa, incantesimo="Non ancora definito"):
@@ -80,6 +78,7 @@ class Casa:
             mystr += str(s)
 
         return mystr
+
 
 # Grifondoro
 Harry = Student(nome="Harry", cognome="Potter", eta=11, capelli="castani", occhi="azzurri", casa="Grifondoro", animale="civetta", incantesimo="Expecto Patronum")
