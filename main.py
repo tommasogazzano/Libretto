@@ -1,150 +1,17 @@
-# Harry = ["Harry", "Potter", 11,
-#          "capelli castani", "occhi azzurri",
-#          "Grifondoro", ""]
-#
-# print(Harry)
-# print("Il nome è ", Harry[0])
-#
-# Harry[6] = "Expecto Patronum"
-#
-# print(Harry)
-#
-# Ron = ["Ron", "Weasley", 11,
-#          "capelli rossi", "occhi marroni",
-#          "Grifondoro", ""]
-#
-# Grifondoro = [Harry, Ron]
 from dataclasses import dataclass
+from scuola import Student, Teacher, Casa, Scuola, Person
+# import voto
+# importiamo un solo nome, che è il
+# nome del modulo "voto", e poi accedo alle varie
+# classi con la notazione voto.Voto, voto.Libretto
 
+from voto.voto import Voto, Libretto
+# importiamo più nomi indipendenti, Voto, Libretto
+import flet
 
-class Person:
-    def __init__(self, nome, cognome, eta,
-                 capelli, occhi, casa, incantesimo="Non ancora definito"):
-        self.nome = nome
-        self._cognome = cognome
-        self.eta = eta
-        self.capelli = capelli
-        self.occhi = occhi
-        self.casa = casa
-        self.__prova = None
-        self.incantesimo = incantesimo
+# from voto import *
+# importa tutti i nomi in voto in maniera indipendente, Voto, Libretto, cfuTot
 
-    def __str__(self):
-        return f"Person: {self.nome} {self._cognome} \n"
-
-    @property
-    def cognome(self):  # eq. GETTER
-        return self._cognome
-
-    @cognome.setter
-    def cognome(self, value):  # eq. SETTER
-        # CONTROLLI per verificare che value sia compativile con _cognome
-        self._cognome = value
-
-
-class Student(Person):
-    def __init__(self, nome, cognome, eta,
-                 capelli, occhi, casa, animale, incantesimo="Non ancora definito"):
-        super().__init__(nome, cognome, eta, capelli, occhi, casa, incantesimo)
-        self.animale = animale
-
-    def __str__(self):
-        return f"Student: {self.nome} - {self._cognome} - {self.casa} \n "
-
-    def __repr__(self):
-        return f"Student(nome, cognome, eta, capelli, occhi, casa, animale)"
-
-    def prettyPrint(self):
-        print("Voglio stampare meglio")
-
-
-class Teacher(Person):
-    def __init__(self, nome, cognome, eta,
-                 capelli, occhi, casa, materia, incantesimo="Non ancora definito"):
-        super().__init__(nome, cognome, eta, capelli, occhi, casa, incantesimo)
-        self.materia = materia
-
-    def __str__(self):
-        return f"Teacher: {self.nome} - {self._cognome} - {self.materia} \n "
-
-
-class Casa:
-    def __init__(self, nome, studenti=[]):
-        self.nome = nome
-        self.studenti = studenti
-
-    def addStudente(self, studente):
-        self.studenti.append(studente)  # --> [ x,x,x [s1, s2]]
-        # self.studenti.extend(studente) # --> [ x,x,x, s1, s2 ]
-
-    def __str__(self):
-        if len(self.studenti) == 0:
-            return f"La casa {self.nome} è vuota."
-
-        mystr = f"\n Lista degli studenti iscritti alla casa {self.nome} \n"
-        for s in self.studenti:
-            mystr += str(s)
-
-        return mystr
-
-class Scuola:
-    def __init__(self, case):
-        self.case = case
-    def __str__(self):
-        mystr = ""
-        for c in self.case:
-            mystr += str(c)
-        return mystr
-
-# class Voto:
-#     def __init__(self, materia, punteggio, data, lode):
-#         if  punteggio == 30:
-#             self.materia = materia
-#             self.punteggio = punteggio
-#             self.data = data
-#             self.lode = lode
-#         elif punteggio < 30:
-#             self.materia = materia
-#             self.punteggio = punteggio
-#             self.data = data
-#             self.lode = False
-#         else:
-#             raise ValueError(f"Attenzione, non posso creare un voto con punteggio {punteggio}")
-#     def __str__(self):
-#         if self.lode:
-#             return f"In {self.materia} hai preso {self.punteggio} e lode il {self.data}"
-#         else:
-#             return f"In {self.materia} hai preso {self.punteggio} il {self.data}"
-
-@dataclass
-class Voto:
-    materia: str
-    punteggio: int
-    data: str
-    lode: bool
-
-    def __str__(self):
-        if self.lode:
-            return f"In {self.materia} hai preso {self.punteggio} e lode il {self.data}"
-        else:
-            return f"In {self.materia} hai preso {self.punteggio} il {self.data}"
-
-
-class Libretto:
-    def __init__(self, proprietario, voti = []):
-        self.proprietario = proprietario
-        self.voti = voti
-
-    def append(self, voto): # duck!
-        self.voti.append(voto)
-
-    def __str__(self):
-        mystr = f"Libretto voti di {self.proprietario} \n"
-        for v in self.voti:
-            mystr += f"{v} \n"
-        return mystr
-    def __len__(self):
-        return len(self.voti)
 
 # Grifondoro
 Harry = Student(nome="Harry", cognome="Potter", eta=11, capelli="castani", occhi="azzurri", casa="Grifondoro",
