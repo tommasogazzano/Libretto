@@ -14,6 +14,7 @@
 #          "Grifondoro", ""]
 #
 # Grifondoro = [Harry, Ron]
+
 from dataclasses import dataclass
 
 
@@ -62,24 +63,89 @@ class Teacher(Person):
         self.materia = materia
     def __str__(self):
         return f"Teacher: {self.nome} - {self._cognome} - {self.materia} \n "
+
 class Casa:
-    def __init__(self, nome, studenti = [] ):
+    def __init__(self, nome, studenti):
         self.nome = nome
         self.studenti = studenti
 
     def addStudente(self, studente):
-        # self.studenti.append(studente) # --> [ x,x,x [s1, s2]]
-        self.studenti.extend(studente) # --> [ x,x,x, s1, s2 ]
+         self.studenti.append(studente) # --> [ x,x,x [s1, s2]]
+        #self.studenti.extend(studente) # --> [ x,x,x, s1, s2 ]
 
     def __str__(self):
         if len(self.studenti) == 0:
-            return "La casa {self.nome} + è vuota."
+            return f"La casa {self.nome} è vuota."
 
         mystr = f"\n Lista degli studenti iscritti alla casa {self.nome} \n"
         for s in self.studenti:
             mystr += str(s)
 
         return mystr
+
+class Scuola:
+    def __init__(self, case):
+        self.case = case
+
+    def __str__(self):
+        mystr = ""
+        for c in self.case:
+            mystr += str(c)
+        return mystr
+'''
+class Voto:
+    def __init__(self, materia, punteggio, data, lode):
+        if punteggio== 30:
+            self.materia = materia
+            self.punteggio = punteggio
+            self.data = data
+            self.lode = lode
+        elif punteggio < 30:
+            self.materia = materia
+            self.punteggio = punteggio
+            self.data = data
+            self.lode = False
+        else:
+            raise ValueError(f"Attenzione, non posso creare un voto con punteggio {self.punteggio}")
+
+    def __str__(self):
+        if self.lode:
+            return f"In {self.materia} hai preso {self.punteggio} con lode, il {self.data}"
+        else:
+            return f"In {self.materia} hai preso {self.punteggio}, il {self.data}"
+'''
+
+class Libretto:
+    def __init__(self, proprietario, voti = []):
+        self.proprietario = proprietario
+        self.voti = voti
+
+    def append(self, voto): #Duck Type
+        self.voti.append(voto)
+
+    def __str__(self):
+        mystr = f"Libretto voti di {self.proprietario}"
+        for v in self.voti:
+            mystr += f"{v} \n"
+        return mystr
+
+    def __len__(self):
+        return len(self.voti)
+
+@dataclass
+class Voto:
+    materia: str
+    punteggio: int
+    data: str
+    lode: bool
+
+    def __str__(self):
+        if self.lode:
+            return f"In {self.materia} hai preso {self.punteggio} con lode, il {self.data}"
+        else:
+            return f"In {self.materia} hai preso {self.punteggio}, il {self.data}"
+
+
 
 # Grifondoro
 Harry = Student(nome="Harry", cognome="Potter", eta=11, capelli="castani", occhi="azzurri", casa="Grifondoro", animale="civetta", incantesimo="Expecto Patronum")
@@ -131,6 +197,47 @@ personaggi = [Harry, Hermione, Ron, Neville, Ginny, Sirius, Remus, Minerva, Albu
               Draco, Severus, Horace, Bellatrix, Lucius, Narcissa, Pansy, Blaise, Luna, Cho, Gilderoy, Filius, Xenophilius,
               Padma, Michael, Cedric, Pomona, Hannah, Ernest, Susan, Ted]
 
-print(Lily._cognome)   ##PRIVATO (SOTTOLINEATURA ONDULATA IN VERDE CHE CON STO TEMA NON SI VEDE) --> PER CONVENZIONE NON LE USIAMO
+#print(Lily._cognome)   ##PRIVATO (SOTTOLINEATURA ONDULATA IN VERDE CHE CON STO TEMA NON SI VEDE) --> PER CONVENZIONE NON LE USIAMO
 
+grifondoro = Casa("Grifondoro", [])
+tassorosso = Casa("Tassorosso", []) #   VA BENE ANCHE COSI'
+corvonero = Casa("Corvonero", [])
+serpeverde = Casa("Serpeverde", [])
 
+'''
+for p in personaggi:
+    if isinstance(p, Student):
+        if p.casa == grifondoro.nome:
+            grifondoro.addStudente(p)
+        if p.casa == tassorosso.nome:
+            tassorosso.addStudente(p)
+        if p.casa == corvonero.nome:
+            corvonero.addStudente(p)
+        if p.casa == serpeverde.nome:
+            serpeverde.addStudente(p)
+'''
+#si può fare anche:
+
+print(grifondoro)
+
+for p in personaggi:
+    if isinstance(p, Student):
+        match p.casa:
+            case "Grifondoro":
+                grifondoro.addStudente(p)
+            case "Tassorosso":
+                tassorosso.addStudente(p)
+            case "Corvonero":
+                corvonero.addStudente(p)
+            case "Serpeverde":
+                serpeverde.addStudente(p)
+
+print(grifondoro)
+
+v1 = Voto("Transfigurazione", 24, "2024-02-13", True)
+v2 = Voto("Pozioni", 30, "2024-02-15", True)
+v3 = Voto("Difesa contro le arti oscure", 27, "2024-02-21", True)
+
+mylib = Libretto(Harry, [v1, v2, v3])
+
+print(mylib)
