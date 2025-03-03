@@ -22,7 +22,7 @@ class Libretto:
         self.voti.append(voto)
 
     def __str__(self):
-        mystr = f"Libretto voti di {self.proprietario}"
+        mystr = f"Libretto voti di {self.proprietario}\n"
         for v in self.voti:
             mystr += f"{v} \n"
         return mystr
@@ -52,3 +52,20 @@ class Voto:
         else:
             return f"In {self.materia} hai preso {self.punteggio}, il {self.data}"
 '''
+
+
+def testVoto():
+    v1 = Voto("Transfigurazione", 24, "2024-02-13", True)
+    v2 = Voto("Pozioni", 30, "2024-02-15", True)
+    v3 = Voto("Difesa contro le arti oscure", 27, "2024-02-21", True)
+
+    mylib = Libretto(None, [v1, v2, v3])
+
+    print(mylib)
+
+
+if __name__ == "__main__":
+    testVoto()
+
+
+

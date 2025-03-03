@@ -15,8 +15,8 @@
 #
 # Grifondoro = [Harry, Ron]
 
-from voto import Voto, Libretto
-from scuola import Scuola, Student, Teacher, Casa, Person
+from Voto.voto import Voto, Libretto
+from scuola import Student, Teacher, Casa, Person
 
 
 
@@ -111,6 +111,6 @@ v1 = Voto("Transfigurazione", 24, "2024-02-13", True)
 v2 = Voto("Pozioni", 30, "2024-02-15", True)
 v3 = Voto("Difesa contro le arti oscure", 27, "2024-02-21", True)
 
-mylib = Libretto(Harry, [v1, v2, v3])
+mylib = Libretto(None, [v1, v2, v3])
 
 print(mylib)
