@@ -1,8 +1,76 @@
-from Voto.voto import Voto, Libretto
-from scuola import Student, Teacher, Casa, Person
+# Harry = ["Harry", "Potter", 11,
+#          "capelli castani", "occhi azzurri",
+#          "Grifondoro", ""]
+#
+# print(Harry)
+# print("Il nome è ", Harry[0])
+#
+# Harry[6] = "Expecto Patronum"
+#
+# print(Harry)
+#
+# Ron = ["Ron", "Weasley", 11,
+#          "capelli rossi", "occhi marroni",
+#          "Grifondoro", ""]
+#
+# Grifondoro = [Harry, Ron]
+from dataclasses import dataclass
 
-import sys
-#print(sys.path)
+
+class Person:
+    def __init__(self, nome, cognome, eta,
+                 capelli, occhi, casa, incantesimo="Non ancora definito"):
+        self.nome = nome
+        self.cognome = cognome
+        self.eta = eta
+        self.capelli = capelli
+        self.occhi = occhi
+        self.casa = casa
+        self.incantesimo = incantesimo
+
+    def __str__(self):
+        return f"Person: {self.nome} {self.cognome} \n"
+
+class Student(Person):
+    def __init__(self, nome, cognome, eta,
+                 capelli, occhi, casa, animale, incantesimo="Non ancora definito"):
+        super().__init__(nome, cognome, eta, capelli, occhi, casa, incantesimo)
+        self.animale = animale
+
+    def __str__(self):
+        return f"Student: {self.nome} - {self.cognome} - {self.casa} \n "
+
+    def __repr__(self):
+        return f"Student(nome, cognome, eta, capelli, occhi, casa, animale)"
+
+    def prettyPrint(self):
+        print("Voglio stampare meglio")
+
+class Teacher(Person):
+    def __init__(self, nome, cognome, eta,
+                 capelli, occhi, casa, materia, incantesimo="Non ancora definito"):
+        super().__init__(nome, cognome, eta, capelli, occhi, casa, incantesimo)
+        self.materia = materia
+    def __str__(self):
+        return f"Teacher: {self.nome} - {self.cognome} - {self.materia} \n "
+class Casa:
+    def __init__(self, nome, studenti = [] ):
+        self.nome = nome
+        self.studenti = studenti
+
+    def addStudente(self, studente):
+        # self.studenti.append(studente) # --> [ x,x,x [s1, s2]]
+        self.studenti.extend(studente) # --> [ x,x,x, s1, s2 ]
+
+    def __str__(self):
+        if len(self.studenti) == 0:
+            return "La casa {self.nome} + è vuota."
+
+        mystr = f"\n Lista degli studenti iscritti alla casa {self.nome} \n"
+        for s in self.studenti:
+            mystr += str(s)
+
+        return mystr
 
 # Grifondoro
 Harry = Student(nome="Harry", cognome="Potter", eta=11, capelli="castani", occhi="azzurri", casa="Grifondoro", animale="civetta", incantesimo="Expecto Patronum")
@@ -53,47 +121,3 @@ print(Harry, Ron, Susan, Xenophilius, Remus)
 personaggi = [Harry, Hermione, Ron, Neville, Ginny, Sirius, Remus, Minerva, Albus, Rubeus, James, Lily, Fred, George,
               Draco, Severus, Horace, Bellatrix, Lucius, Narcissa, Pansy, Blaise, Luna, Cho, Gilderoy, Filius, Xenophilius,
               Padma, Michael, Cedric, Pomona, Hannah, Ernest, Susan, Ted]
-
-#print(Lily._cognome)   ##PRIVATO (SOTTOLINEATURA ONDULATA IN VERDE CHE CON STO TEMA NON SI VEDE) --> PER CONVENZIONE NON LE USIAMO
-
-grifondoro = Casa("Grifondoro", [])
-tassorosso = Casa("Tassorosso", []) #   VA BENE ANCHE COSI'
-corvonero = Casa("Corvonero", [])
-serpeverde = Casa("Serpeverde", [])
-
-'''
-for p in personaggi:
-    if isinstance(p, Student):
-        if p.casa == grifondoro.nome:
-            grifondoro.addStudente(p)
-        if p.casa == tassorosso.nome:
-            tassorosso.addStudente(p)
-        if p.casa == corvonero.nome:
-            corvonero.addStudente(p)
-        if p.casa == serpeverde.nome:
-            serpeverde.addStudente(p)
-'''
-
-print(grifondoro)
-
-for p in personaggi:
-    if isinstance(p, Student):
-        match p.casa:
-            case "Grifondoro":
-                grifondoro.addStudente(p)
-            case "Tassorosso":
-                tassorosso.addStudente(p)
-            case "Corvonero":
-                corvonero.addStudente(p)
-            case "Serpeverde":
-                serpeverde.addStudente(p)
-
-print(grifondoro)
-
-v1 = Voto("Transfigurazione", 24, "2024-02-13", True)
-v2 = Voto("Pozioni", 30, "2024-02-15", True)
-v3 = Voto("Difesa contro le arti oscure", 27, "2024-02-21", True)
-
-mylib = Libretto(None, [v1, v2, v3])
-
-print(mylib)

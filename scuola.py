@@ -14,12 +14,14 @@ class Person:
         return f"Person: {self.nome} {self._cognome} \n"
 
     @property
-    def cognome(self): ##COME LA VARIABILE PROTETTA SENZA "_"
-        return self._cognome   #COME IL GETTER IN JAVA
+    def cognome(self):  # eq. GETTER
+        return self._cognome
 
     @cognome.setter
-    def cognome(self, value): #COME IL SETTER IN JAVA
+    def cognome(self, value):  # eq. SETTER
+        # CONTROLLI per verificare che value sia compativile con _cognome
         self._cognome = value
+
 
 class Student(Person):
     def __init__(self, nome, cognome, eta,
@@ -36,22 +38,25 @@ class Student(Person):
     def prettyPrint(self):
         print("Voglio stampare meglio")
 
+
 class Teacher(Person):
     def __init__(self, nome, cognome, eta,
                  capelli, occhi, casa, materia, incantesimo="Non ancora definito"):
         super().__init__(nome, cognome, eta, capelli, occhi, casa, incantesimo)
         self.materia = materia
+
     def __str__(self):
         return f"Teacher: {self.nome} - {self._cognome} - {self.materia} \n "
 
+
 class Casa:
-    def __init__(self, nome, studenti):
+    def __init__(self, nome, studenti=[]):
         self.nome = nome
         self.studenti = studenti
 
     def addStudente(self, studente):
-         self.studenti.append(studente) # --> [ x,x,x [s1, s2]]
-        #self.studenti.extend(studente) # --> [ x,x,x, s1, s2 ]
+        self.studenti.append(studente)  # --> [ x,x,x [s1, s2]]
+        # self.studenti.extend(studente) # --> [ x,x,x, s1, s2 ]
 
     def __str__(self):
         if len(self.studenti) == 0:
@@ -66,7 +71,6 @@ class Casa:
 class Scuola:
     def __init__(self, case):
         self.case = case
-
     def __str__(self):
         mystr = ""
         for c in self.case:
