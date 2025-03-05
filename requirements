@@ -1,0 +1,4 @@
+Requirements:
+- qui si inseriscono tutte le librerie esterne che si devono importare per runnare il programma
+- si specifica il nome e la versione del pacchetto:
+- ex: flet = 0.27.5

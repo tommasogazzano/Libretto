@@ -1,24 +1,8 @@
-# Harry = ["Harry", "Potter", 11,
-#          "capelli castani", "occhi azzurri",
-#          "Grifondoro", ""]
-#
-# print(Harry)
-# print("Il nome è ", Harry[0])
-#
-# Harry[6] = "Expecto Patronum"
-#
-# print(Harry)
-#
-# Ron = ["Ron", "Weasley", 11,
-#          "capelli rossi", "occhi marroni",
-#          "Grifondoro", ""]
-#
-# Grifondoro = [Harry, Ron]
-
 from Voto.voto import Voto, Libretto
 from scuola import Student, Teacher, Casa, Person
 
-
+import sys
+#print(sys.path)
 
 # Grifondoro
 Harry = Student(nome="Harry", cognome="Potter", eta=11, capelli="castani", occhi="azzurri", casa="Grifondoro", animale="civetta", incantesimo="Expecto Patronum")
@@ -89,7 +73,6 @@ for p in personaggi:
         if p.casa == serpeverde.nome:
             serpeverde.addStudente(p)
 '''
-#si può fare anche:
 
 print(grifondoro)
 
