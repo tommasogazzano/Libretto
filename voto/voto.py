@@ -1,5 +1,6 @@
+import math
 from dataclasses import dataclass
-
+import flet
 cfuTot = 180
 
 @dataclass
@@ -8,7 +9,6 @@ class Voto:
     punteggio: int
     data: str
     lode: bool
-
     def __str__(self):
         if self.lode:
             return f"In {self.materia} hai preso {self.punteggio} e lode il {self.data}"
@@ -28,8 +28,51 @@ class Libretto:
         for v in self.voti:
             mystr += f"{v} \n"
         return mystr
+
     def __len__(self):
         return len(self.voti)
+
+    def calcolaMedia(self):
+        """
+        restituisce la media dei voti attualmente presenti nel libretto
+        :return: valore numerico della media, oppure ValueError in caso la lista fosse vuota
+        """
+
+        #media = sommaVoti / numeroEsamisami
+        # v = []
+        # for v1 in self.voti:
+        #     v.append(v1.punteggio)
+        if len(self.voti) == 0:
+            raise ValueError("Attenzione, lista esami vuota.")
+
+        v = [v1.punteggio for v1 in self.voti]
+        return sum(v)/len(v)
+        # return math.mean(v)
+
+    def getVotiByPunti(self, punti, lode):
+        """
+        restituisce una lista di esami con punteggio uguale a punti (e lode se applicabile)
+        :param punti: variabile di tipo intero che rappresenta il punteggio
+        :param lode: booleano che indica se presente la lode
+        :return: lista di voti
+        """
+        votiFiltrati = []
+        for v in self.voti:
+            if v.punteggio == punti and v.lode == lode:
+                votiFiltrati.append(v)
+        return votiFiltrati
+
+    def getVotoByName(self, nome):
+        """
+        restituisce un oggetto Voto il cui campo materia è uguale a nome
+        :param nome: stringa che indica il nome della materia
+        :return: oggetto di tipo Voto, oppure None in caso di voto non trovato
+        """
+        for v in self.voti:
+            if v.materia == nome:
+                return v
+
+
 
 def testVoto():
     print("Ho usato Voto in maniera standalone")
@@ -42,6 +85,7 @@ def testVoto():
     print(mylib)
     mylib.append(v3)
     print(mylib)
+    print((flet.Text(mylib)))
 
 if __name__ == "__main__":
     testVoto()
