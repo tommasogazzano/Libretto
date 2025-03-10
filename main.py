@@ -14,64 +14,10 @@
 #          "Grifondoro", ""]
 #
 # Grifondoro = [Harry, Ron]
+
 from dataclasses import dataclass
-
-
-class Person:
-    def __init__(self, nome, cognome, eta,
-                 capelli, occhi, casa, incantesimo="Non ancora definito"):
-        self.nome = nome
-        self.cognome = cognome
-        self.eta = eta
-        self.capelli = capelli
-        self.occhi = occhi
-        self.casa = casa
-        self.incantesimo = incantesimo
-
-    def __str__(self):
-        return f"Person: {self.nome} {self.cognome} \n"
-
-class Student(Person):
-    def __init__(self, nome, cognome, eta,
-                 capelli, occhi, casa, animale, incantesimo="Non ancora definito"):
-        super().__init__(nome, cognome, eta, capelli, occhi, casa, incantesimo)
-        self.animale = animale
-
-    def __str__(self):
-        return f"Student: {self.nome} - {self.cognome} - {self.casa} \n "
-
-    def __repr__(self):
-        return f"Student(nome, cognome, eta, capelli, occhi, casa, animale)"
-
-    def prettyPrint(self):
-        print("Voglio stampare meglio")
-
-class Teacher(Person):
-    def __init__(self, nome, cognome, eta,
-                 capelli, occhi, casa, materia, incantesimo="Non ancora definito"):
-        super().__init__(nome, cognome, eta, capelli, occhi, casa, incantesimo)
-        self.materia = materia
-    def __str__(self):
-        return f"Teacher: {self.nome} - {self.cognome} - {self.materia} \n "
-class Casa:
-    def __init__(self, nome, studenti = [] ):
-        self.nome = nome
-        self.studenti = studenti
-
-    def addStudente(self, studente):
-        # self.studenti.append(studente) # --> [ x,x,x [s1, s2]]
-        self.studenti.extend(studente) # --> [ x,x,x, s1, s2 ]
-
-    def __str__(self):
-        if len(self.studenti) == 0:
-            return "La casa {self.nome} + è vuota."
-
-        mystr = f"\n Lista degli studenti iscritti alla casa {self.nome} \n"
-        for s in self.studenti:
-            mystr += str(s)
-
-        return mystr
-
+from Voto.voto import Voto
+from scuola import Scuola, Person, Teacher, Student, Casa
 # Grifondoro
 Harry = Student(nome="Harry", cognome="Potter", eta=11, capelli="castani", occhi="azzurri", casa="Grifondoro", animale="civetta", incantesimo="Expecto Patronum")
 Hermione = Student(nome="Hermione", cognome="Granger", eta=11, capelli="castani", occhi="castani", casa="Grifondoro", animale="gatto", incantesimo="Wingardium Leviosa")
@@ -121,3 +67,5 @@ print(Harry, Ron, Susan, Xenophilius, Remus)
 personaggi = [Harry, Hermione, Ron, Neville, Ginny, Sirius, Remus, Minerva, Albus, Rubeus, James, Lily, Fred, George,
               Draco, Severus, Horace, Bellatrix, Lucius, Narcissa, Pansy, Blaise, Luna, Cho, Gilderoy, Filius, Xenophilius,
               Padma, Michael, Cedric, Pomona, Hannah, Ernest, Susan, Ted]
+
+
