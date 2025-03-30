@@ -4,7 +4,7 @@ import mysql.connector
 class DBConnect:
 
     @classmethod
-    def getConnection(self):
+    def getConnection(cls):
         try:
             cnx = mysql.connector.connect(
                 user = "root",
